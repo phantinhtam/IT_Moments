@@ -1,0 +1,185 @@
+import React, { useState } from 'react';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import { TextField, Button, IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ReplyIcon from '@mui/icons-material/Reply';
+
+const PostBottom = () => {
+  const [reactions, setReactions] = useState({
+    like: 0,
+    tym: 0,
+    haha: 0,
+    wow: 0,
+    sad: 0,
+    phanno: 0
+  });
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
+  const [commentVisible, setCommentVisible] = useState(false);
+  const [shares, setShares] = useState(0);
+  const [showReactions, setShowReactions] = useState(false);
+  const [showReactionDetails, setShowReactionDetails] = useState('');
+  const [editCommentId, setEditCommentId] = useState(null);
+  const [editCommentText, setEditCommentText] = useState('');
+
+  const handleReaction = (type) => {
+    setReactions(prev => ({
+      ...prev,
+      [type]: prev[type] + 1
+    }));
+    setShowReactions(false); // Hide popover after reaction
+  };
+
+  const handleComment = () => {
+    if (newComment.trim()) {
+      setComments([...comments, { id: Date.now(), content: newComment }]);
+      setNewComment('');
+      setCommentVisible(true);
+    }
+  };
+
+  const handleShare = () => {
+    setShares(shares + 1);
+  };
+
+  const handleEditComment = (id, newContent) => {
+    setComments(comments.map(comment => comment.id === id ? { ...comment, content: newContent } : comment));
+    setEditCommentId(null);
+    setEditCommentText('');
+  };
+
+  const handleDeleteComment = (id) => {
+    setComments(comments.filter(comment => comment.id !== id));
+  };
+
+  const handleReply = (id) => {
+    console.log('Reply to comment', id); // Handle reply logic
+  };
+
+  return (
+    <div className='postbottom-section'>
+      <div className='actions'>
+        <div
+          className='like-button-wrapper'
+          onMouseEnter={() => setShowReactions(true)}
+          onMouseLeave={() => setShowReactions(false)}
+        >
+          <button className='like-button'>
+            <ThumbUpAltIcon /> Like {reactions.like}
+          </button>
+          {showReactions && (
+            <div className='reaction-popover'>
+              <span onClick={() => handleReaction('like')}>
+                <ThumbUpAltIcon />
+              </span>
+              <span onClick={() => handleReaction('tym')}>
+                <FavoriteIcon />
+              </span>
+              <span onClick={() => handleReaction('haha')}>
+                <EmojiEmotionsIcon />
+              </span>
+              <span onClick={() => handleReaction('wow')}>
+                <SentimentSatisfiedAltIcon />
+              </span>
+              <span onClick={() => handleReaction('sad')}>
+                <SentimentVeryDissatisfiedIcon />
+              </span>
+              <span onClick={() => handleReaction('phanno')}>
+                <ThumbDownAltIcon />
+              </span>
+            </div>
+          )}
+        </div>
+        <button onClick={() => setCommentVisible(!commentVisible)} className='comment-button'>
+          💬 Comment {comments.length}
+        </button>
+        <button onClick={handleShare} className='share-button'>
+          🔗 Share {shares}
+        </button>
+      </div>
+      <div className='reaction-counts'>
+        {Object.keys(reactions).map(type => (
+          reactions[type] > 0 && (
+            <span
+              key={type}
+              className='reaction-count'
+              onMouseEnter={() => setShowReactionDetails(type)}
+              onMouseLeave={() => setShowReactionDetails('')}
+            >
+              {type === 'like' && '👍'}
+              {type === 'tym' && '❤️'}
+              {type === 'haha' && '😂'}
+              {type === 'wow' && '😮'}
+              {type === 'sad' && '😢'}
+              {type === 'phanno' && '😡'} 
+              {reactions[type]}
+            </span>
+          )
+        ))}
+      </div>
+      {showReactionDetails && (
+        <div className='reaction-details'>
+          <p>Hiển thị danh sách người dùng thả cảm xúc {showReactionDetails} (đang cập nhật...)</p>
+        </div>
+      )}
+    {commentVisible && (
+        <div className='comments-section'>
+          <TextField
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            variant="outlined"
+            size="small"
+            fullWidth
+            placeholder="Write a comment..."
+          />
+          <Button onClick={handleComment} variant="contained">Add Comment</Button>
+          {comments.map(comment => (
+            <div key={comment.id} className='comment'>
+              {editCommentId === comment.id ? (
+                <>
+                  <TextField
+                    value={editCommentText}
+                    onChange={(e) => setEditCommentText(e.target.value)}
+                    variant="outlined"
+                    size="small"
+                  />
+                  <Button onClick={() => handleEditComment(comment.id, editCommentText)}>Save</Button>
+                </>
+              ) : (
+                <p>{comment.content}</p>
+              )}
+              <div className='comment-actions'>
+                <IconButton onClick={() => { setEditCommentId(comment.id); setEditCommentText(comment.content); }}>
+                  <EditIcon />
+                </IconButton>
+                <IconButton onClick={() => handleDeleteComment(comment.id)}>
+                  <DeleteIcon />
+                </IconButton>
+                <IconButton onClick={() => handleReply(comment.id)}>
+                  <ReplyIcon />
+                </IconButton>
+              </div>
+              {/* Render replies */}
+              {comment.replies.length > 0 && (
+                <div className='replies'>
+                  {comment.replies.map(reply => (
+                    <div key={reply.id} className='reply'>
+                      <p>{reply.content}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+export default PostBottom;

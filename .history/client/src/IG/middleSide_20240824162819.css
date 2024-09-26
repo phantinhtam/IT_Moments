@@ -1,0 +1,111 @@
+.middleHomeSide{
+    width: 100%;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.storyBlock{
+    width: 780px;
+    height: 80%;
+    align-items: center;
+    border: 1px solid;
+    display: flex;
+    gap: 1px;
+    overflow-x: auto;
+}
+.storyParticular{
+    width: 76px;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imageDiv{
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    padding: 2px;
+    border: 1px solid #de0c56;
+}
+.statusImg{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.profileName{
+    font-size: 12px;
+}
+/*======================POSTINFOSECTION=====================*/
+.postSection{
+   border: 1px solid;
+   width: 60%;
+   color: black;
+}
+.post{
+    width: 100%;
+}
+.postInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding: 5px 0;
+}
+.postInfoImg{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.postInfousername{
+    font-size: 12px;
+    font-weight: 600;
+}
+.postImgage{
+    width: 100%;
+}
+.iconsBlock{
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.leftIcon{
+    display: flex;
+    gap: 15px
+}
+.likeImg{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+.imagesLike{
+    position: relative;
+}
+.likeSection{
+    width: 100%;
+}
+.likeImg2{
+ width: 20px;
+ height: 20px;
+ border-radius: 100%;
+ position: absolute;
+ left: 3%;
+}
+.likeImg3{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    left: 6%;
+}
+.noOfLikes{
+    position: absolute;
+    font-size: 14px;
+    font-weight: 600;
+    
+}

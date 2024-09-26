@@ -1,0 +1,48 @@
+.middleHomeSide{
+    width: 100%;
+    border: 1px solid;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.storyBlock{
+    width: 780px;
+    height: 80%;
+    align-items: center;
+    border: 1px solid;
+    display: flex;
+    gap: 1px;
+    overflow-x: auto;
+}
+.storyParticular{
+    width: 76px;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imageDiv{
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    padding: 2px;
+    border: 1px solid #de0c56;
+}
+.statusImg{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.profileName{
+    font-size: 12px;
+}
+/*======================POSTINFOSECTION=====================*/
+.postSection{
+    margin: 20px;
+    font-size: 23px;
+    background-color: aliceblue;
+}

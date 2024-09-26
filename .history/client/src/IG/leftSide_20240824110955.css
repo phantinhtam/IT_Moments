@@ -1,0 +1,28 @@
+.logoPart{
+    width: 100px;
+    height: 30px;
+    margin-left: 25px;
+    color: ;
+}
+.navLinkPart{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.navLink{
+    display:flex;
+    border-radius: 5px;
+    height: 45px;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    &:hover{
+    background-color: #ededed;
+   }
+}
+.navName{
+    font-weight: 700;
+    color: black;
+
+}

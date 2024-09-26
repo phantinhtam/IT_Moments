@@ -1,0 +1,27 @@
+.middleHomeSide{
+    width: 100%;
+    border: 1px solid;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.storyBlock{
+    width: 80%;
+    border: 1px solid;
+}
+.storyParticular{
+    width: 66px;
+    height: 66px;
+}
+.imageDiv{
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+}
+.statusImg{
+  width: 100%;
+  height: ;
+}

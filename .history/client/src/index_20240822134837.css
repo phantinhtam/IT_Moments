@@ -1,0 +1,342 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(237, 57%, 55%);
+  --second-color: hsl(221, 76%, 47%);
+  --gradient-color: linear-gradient(75deg,
+                    var(--second-color) 12%,  
+                    var(--first-color) 90%);
+  --first-color-light: hsl(245, 53%, 26%);
+  --first-color-dark: hsl(201, 41%, 46%);
+  --title-color: hsl(260, 80%, 18%);
+  --text-color: hsl(260, 24%, 32%);
+  --text-color-light: hsl(260, 16%, 65%);
+  --white-color: hsl(0, 0%, 100%);
+  --body-color: hsl(260, 100%, 97%);
+  --container-color: hsl(0, 0%, 100%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --second-font: "Lora", serif;
+  --biggest-font-size: 2.75rem;
+  --bigger-font-size: 2rem;
+  --big-font-size: 1.75rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-width: 50%;
+  --font-medium: 500;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1152px) {
+  :root {
+    --container-color: #f0f0f0;
+    --first-color: hsl(221, 33%, 81%);
+    --title-color: #333;
+    --text-color: #666;
+    --body-color: #fff;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-weight: var(--font-regular);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*============Header===========*/
+
+section{
+    margin-top: 6rem;
+}
+.container {
+    width:var(--container-color);
+    margin-inline: auto;
+}
+
+.btn {
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: var(--gradient-color);
+  background: var(--white-color);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all;
+}
+.btn.primary{
+  background: var(--first-color);
+  color:rgb(59, 59, 170);
+}
+.btn.category{
+    background: var(--body-color);
+    color: var(--first-color-light);
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+.btn.sm{
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  font-weight: 500;
+}
+
+
+.center{
+    text-align: center;
+    padding-top: 5rem;
+    margin-inline: center;
+    display: block;
+    width: 100%;
+}
+
+/*============================= NAVIGATION ==========================*/
+nav {
+  width: 100%;
+  height: 5rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-bottom: 4px solid var(--first-color-light);
+  backdrop-filter: blur(20px);
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*============================= POSTS ==========================*/
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.post__container {
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem ;
+}
+.post__container img{
+  width: 400px;
+  height: 200px;
+}
+.post {
+  background: var(--container-color);
+  border-radius: var(--first-color);
+  padding: 1rem;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.post:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post__thumbnail {
+  border-radius: var(--body-color);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.post__thumbnail img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post__thumbnail img:hover {
+  transform: scale(1.05);
+}
+
+.post__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.post__content h3 {
+  margin: 0.5rem 0 0.6rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--title-color);
+}
+
+.post__content p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  min-height: 3rem;
+  max-height: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2rem;
+}
+
+.post__author {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.post__author-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.post__author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+/*======================Sidear==============================*/
+.sidebar {
+  grid-column: 4 / 5;
+  padding: 20px 30px;
+  background: #fff;
+  margin-top: 45px;
+}
+
+.sidebar .LeftSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .LeftSide .Title-Left {
+  padding: 20px 30px;
+  border-top: 2px solid #9c9c9c;
+}
+
+.sidebar .LeftSide .Title-Left h3 {
+  font-size: 26px;
+  color: #640505;
+}
+.sidebar .LeftSide .Title-Left a {
+  font-size: 26px;
+  color: #640505;
+}v
+
+.sidebar .LeftSide .Title-Left ul {
+  margin-top: 20px;
+}
+
+.sidebar .LeftSide .Title-Left ul li {
+  list-style: none;
+  margin-top: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/*======================= Post Detail==========================*/
+
+.post-detail{
+  width: var(--font-width);
+  background: var(--text-color);
+  margin-inline: auto;
+  padding: 2rem 0;
+}
+.post-detail__header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.post-detail__buttons{
+  gap: 5rem;
+  align-items: center;
+  max-width: 10rem;
+}
+.post-detail__thumbnail{
+  margin: 2rem ;
+  height: fit-content;
+  max-height: 30rem;
+  overflow: hidden;
+}
+.post-detail p{
+  margin-bottom: 0.7rem;
+}

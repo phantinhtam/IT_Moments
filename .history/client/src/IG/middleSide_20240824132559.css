@@ -1,0 +1,7 @@
+.middleHomeSide{
+    width: 100%;
+    border: 1px solid;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    display: unset;
+}

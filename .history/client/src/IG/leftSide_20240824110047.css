@@ -1,0 +1,14 @@
+.logoPart{
+    width: 100px;
+    height: 30px;
+    margin-left: 25px;
+}
+.navLinkPart{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.navLink{
+    display:flex;
+    border: ;
+}
